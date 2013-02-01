@@ -1,0 +1,75 @@
+\documentclass[backside,notumble,a4paper]{leaflet}
+% Kleiner hack, zur Veranschaulichung einfach das "backside" in voriger Zeile entfernen und kompilieren:
+% leaflet erstellt eine dreigeteilte A4-Seite und beginnt in der rechten Spalte der ersten Seite, 
+% dann werden die drei Spalten der Rückseite bedruckt, die auf dem Kopf stehen.
+% Hier wird nun gesagt, dass nur die Rückseite gezeigt werden soll, außerdem nicht auf dem Kopf stehend.
+% Der zu druckende Inhalt wird einmal als Kommando \inhalt definiert, dann einmal gebracht, um die rechte
+% Spalte der ersten Seite zu füllen (ist in der pdf nicht zu sehen) und dann für jede Spalte der Rückseite 
+% einmal wiederholt, so dass drei identische Spalten auf einem A4-Blatt entstehen, das dann zerschnitten
+% werden kann
+
+\usepackage[T1]{fontenc}	% Passendes Fontencoding zur Suche im pdf
+\usepackage{textcomp}		% das EUR-Zeichen für OT und T1
+\usepackage{palatino}
+\usepackage{microtype}
+\usepackage[ngerman]{babel}	% neue deutsche Rechtschreibung
+\usepackage[utf8]{inputenc}	% direkt deutsche Umlaute und EUR-Zeichen eingeben
+\usepackage{graphicx,framed}	% Bilder, Rahmen
+\usepackage{url}
+\usepackage{tikz}
+
+\setcounter{secnumdepth}{0}	% Überschriftennummerierung ausschalten
+
+\newcommand{\ffmagenta}{magenta}
+\newcommand{\ffyellow}{yellow}
+\newcommand{\fflogo}{
+\draw (36mm,44mm) circle (22mm) [line width=1mm,color=\ffmagenta];
+\draw (74mm,54mm) circle (22mm) [line width=1mm,color=\ffmagenta];
+\draw (74mm,54mm) circle (29mm) [line width=4mm,color=\ffmagenta];
+\fill[\ffyellow] (22mm,48mm) -- (22mm,52mm) -- (30mm,52mm) -- (26mm,56mm) -- (31mm,56mm) -- (37mm,50mm) -- (31mm,44mm) -- (26mm,44mm) -- (30mm,48mm);
+\fill[\ffyellow] (64mm,50mm) -- (73mm,59mm) -- (81mm,59mm) -- (75mm,53mm) -- (88mm,53mm) -- (88mm,47mm) -- (75mm,47mm) -- (81mm,41mm) -- (73mm,41mm);
+}
+
+\newcommand{\inhalt}{
+\small
+\begin{tikzpicture}[scale=0.6]
+\fflogo
+\node at (4,1.5) {freifunk rheinland e.V. -- funkzelle wermelskirchen};
+\end{tikzpicture}
+\section{Einrichtung}
+Ihr Freifunk-Gerät sollte möglichst im Fenster plaziert werden, um eine hohe Reichweite zu gewährleisten.
+
+Der blaue LAN-Anschluss an Ihrem Gerät ist für die Freigabe Ihres Internetanschlusses gedacht.
+Verbinden Sie diesen mit Ihrem Heimnetzwerk.
+
+Bitte beachten Sie, das wir in diesem Fall für eine erhöhte
+Sicherheit zu einem VPN-Zugang raten.
+
+Sollten Sie einen PC mit einem LAN-Kabel zum Freifunk verbinden wollen,
+benutzen Sie bitte ausschließlich Port 1 und 2.
+
+Freifunk-Geräte lassen sich untereinander über Port 3 und 4 miteinander verbinden.
+
+\section{Betrieb}
+Bitte stellen Sie sicher das andere WLAN-Geräte in der Umgebung nur auf den Kanälen
+1, 9 oder 13 funken um Störungen zu vermeiden.
+
+Freifunk-Geräte sind sparsam, ein Gerät verbraucht etwa 2 Watt.
+Ein stabiles Netzwerk benötigt auch Ihr Gerät, schalten Sie es bitte nicht aus.
+
+\section{Kontaktmöglichkeiten}
+\begin{description}
+ \item[Email] \url{ffwk@googlegroups.com}
+ \item[Web] \url{http://wiki.freifunk.net/Freifunk_Wermelskirchen}
+ \item[Persönlich] Jeden zweiten Donnerstag im Katt-Bistro 19h
+\end{description}
+}
+
+\begin{document}
+% Das Vorgehen ist ab Zeile 2 dieser Datei beschrieben.
+\inhalt %erste Seite, wird nicht angezeigt
+\inhalt %Rückseite ab hier
+\inhalt
+\inhalt
+%zwei weitere Seiten der ersten Seite sind frei, die sind wie die erste Seite nicht in der pdf
+\end{document}
